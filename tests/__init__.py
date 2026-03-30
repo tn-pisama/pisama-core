@@ -1,0 +1,1 @@
+"""PISAMA Core test suite."""

@@ -1,0 +1,108 @@
+"""PISAMA Tokenization Module - PII Protection for Traces.
+
+This module provides PII tokenization for agent traces:
+- PII detection with configurable patterns
+- Session-scoped token generation
+- Encrypted vault storage (AES-256-GCM)
+- OS keychain integration for key management
+
+Example:
+    from pisama_core.tokenization import (
+        PIIDetector,
+        TokenGenerator,
+        TokenVault,
+        KeychainManager,
+    )
+
+    # Detect PII
+    detector = PIIDetector()
+    matches = detector.detect("Contact john@example.com")
+
+    # Generate tokens
+    generator = TokenGenerator(session_id="abc123")
+    token = generator.generate("EMAIL", "john@example.com")
+
+    # Store in vault
+    keychain = KeychainManager()
+    key = keychain.get_or_create_key()
+
+    vault = TokenVault("~/.claude/pisama/vault.db")
+    vault.initialize()
+    vault.store("EMAIL", token, "john@example.com", "abc123", key)
+"""
+
+# Detection
+from pisama_core.tokenization.detector import (
+    PIIDetector,
+    PIIMatch,
+    PIIPattern,
+    PIIType,
+    DEFAULT_PATTERNS,
+    DEFAULT_EXCLUSIONS,
+)
+
+# Token generation
+from pisama_core.tokenization.generator import (
+    TokenGenerator,
+    TokenParser,
+    TokenInfo,
+)
+
+# Vault storage
+from pisama_core.tokenization.vault import (
+    TokenVault,
+    TokenRecord,
+    EncryptedValue,
+    derive_key_from_password,
+)
+
+# Keychain
+from pisama_core.tokenization.keychain import (
+    KeychainManager,
+    KeychainResult,
+    KeychainError,
+    KeychainUnavailableError,
+    MacOSKeychain,
+    LinuxSecretService,
+    FileBackend,
+)
+
+# Unified tokenizer
+from pisama_core.tokenization.tokenizer import (
+    Tokenizer,
+    TokenizationResult,
+    TokenizationStats,
+    tokenize_trace_data,
+)
+
+__all__ = [
+    # Detection
+    "PIIDetector",
+    "PIIMatch",
+    "PIIPattern",
+    "PIIType",
+    "DEFAULT_PATTERNS",
+    "DEFAULT_EXCLUSIONS",
+    # Token generation
+    "TokenGenerator",
+    "TokenParser",
+    "TokenInfo",
+    # Vault storage
+    "TokenVault",
+    "TokenRecord",
+    "EncryptedValue",
+    "derive_key_from_password",
+    # Keychain
+    "KeychainManager",
+    "KeychainResult",
+    "KeychainError",
+    "KeychainUnavailableError",
+    "MacOSKeychain",
+    "LinuxSecretService",
+    "FileBackend",
+    # Unified tokenizer
+    "Tokenizer",
+    "TokenizationResult",
+    "TokenizationStats",
+    "tokenize_trace_data",
+]
