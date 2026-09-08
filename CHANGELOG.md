@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.3] - 2026-09-08
+
+### Fixed
+
+- Point distribution documentation metadata to the canonical README instead
+  of the retired documentation host.
+- Include the existing README correction describing adapters actually shipped
+  by this package. No detector, scoring, adapter, or dependency behavior changes.
+
 ## [1.10.2] - 2026-08-12
 
 ### Fixed

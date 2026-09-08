@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pisama-core"
-version = "1.10.2"
+version = "1.10.3"
 description = "Core detection, scoring, and healing engine for Pisama agent forensics"
 readme = "README.md"
 license = "MIT"
@@ -55,7 +55,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://pisama.ai"
-Documentation = "https://docs.pisama.ai"
+Documentation = "https://github.com/Pisama-AI/pisama-core#readme"
 Repository = "https://github.com/Pisama-AI/pisama-core"
 Issues = "https://github.com/Pisama-AI/pisama-core/issues"
 Changelog = "https://github.com/Pisama-AI/pisama-core/blob/main/CHANGELOG.md"
